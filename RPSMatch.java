@@ -1,6 +1,6 @@
 
 /**
- * Write a description of class RPSMatch here.
+ * RPS Match allows the computer and a person to play the game and keep track of each round's results.
  *
  * @author Emily Ensign and Mahee Shah
  * @version 10-24-2022
@@ -17,78 +17,33 @@ public class RPSMatch
     private final int PAPER = 1;
     private final int SCISSORS = 2;
     
+    // this sets the counter of each result to zero
+    // both of us worked on this part
     public RPSMatch()
     {
         humanWins = 0;
         computerWins = 0;
         ties = 0;
     }
+    // this assigns the play of the human to a result, assigning each outcome a number
+    // both of us worked on this part
     public void setHumanPlay(String hp)
     {
         if (hp.equals("rock"))
         {
-            humanPlay = ROCK;
+            humanPlay = 0;
         }
         if (hp.equals("paper"))
         {
-            humanPlay = PAPER;
+            humanPlay = 1;
         }
         if (hp.equals("scissors"))
         {
-            humanPlay = SCISSORS;
+            humanPlay = 2;
         }
-    }
-    //this version cheats
-    
-    public String getComputerPlay(String hp)
-    {
-        if (hp.equals("rock"))
-        {
-            int computerPlay = (int)(Math.random()*5);
-            if (computerPlay == 4)
-            {
-              computerPlay = 1;
-            }
-            else if ( computerPlay <= 3)
-            {
-                computerPlay = 0;
-            }
-            else if (computerPlay == 5)
-                computerPlay = 2;
-            }
-        if (hp.equals("paper"))
-        {
-            int computerPlay = (int)(Math.random()*5);
-            if (computerPlay == 4)
-            {
-              computerPlay = 0;
-            }
-            else if ( computerPlay <= 3)
-            {
-                computerPlay = 2;
-            }
-            else if (computerPlay == 5)
-                computerPlay = 1;
-            }
-        if (hp.equals("rock"))
-        {
-            int computerPlay=(int)(Math.random()*5);
-            if (computerPlay == 4)
-            {
-              computerPlay = 2;
-            }
-            else if ( computerPlay <= 3)
-            {
-                computerPlay = 1;
-            }
-            else if (computerPlay==5)
-                computerPlay = 0;
-            }
-            return "Something is wrong!";
-        }
-        
+    }   
    // this version does not cheat
-   /*
+   // Emily wrote this part
     public String getComputerPlay()
     {
         computerPlay = (int)(Math.random() * 3);
@@ -105,11 +60,56 @@ public class RPSMatch
             return ("scissors");
         }
     }
-    */
-    public void setComputerPlay(String cp)
+   // this version cheats
+   // Mahee wrote the code and Emily came up with the idea on how to cheat
+   /*
+    public String getComputerPlay(String hp)
     {
-        
+        computerPlay = (int)(Math.random() * 10);
+        if (humanPlay == 0 && (computerPlay == 6 || computerPlay == 7))
+        {
+            return ("rock");
+        }
+        else if (humanPlay == 0 && computerPlay <= 5)
+        {
+            return ("paper");
+        }
+        else if (humanPlay == 0 && (computerPlay == 8 || computerPlay == 9))
+        {
+            return ("scissors");
+        }
+        else if (humanPlay == 1 && (computerPlay == 6 || computerPlay == 7))
+        {
+            return ("rock");
+        }
+        else if (humanPlay == 1 && (computerPlay == 8 || computerPlay == 9))
+        {
+            return ("paper");
+        }
+        else if (humanPlay == 1 && computerPlay <= 5)
+        {
+            return ("scissors");
+        }
+        else if (humanPlay == 2 && computerPlay <= 5)
+        {
+            return ("rock");
+        }
+        else if (humanPlay == 2 && (computerPlay == 6 || computerPlay == 7))
+        {
+            return ("paper");
+        }
+        else if (humanPlay == 2 && (computerPlay == 8 || computerPlay == 9))
+        {
+            return ("scissors");
+        }
+        else
+        {
+            return ("Something is wrong!");
+        }
     }
+    */
+   // this says what the outcome of the game will be with each player's choice
+   // Emily wrote this part with help from Mahee
     public String getResult()
     {
         if (humanPlay==0 && computerPlay==0)
@@ -162,6 +162,8 @@ public class RPSMatch
             return ("Something is wrong!");
         }
     }
+    // this  returns who won the game
+    // both of us worked on this part
     public int getHumanWins()
     {
         return humanWins;
@@ -173,5 +175,5 @@ public class RPSMatch
     public int getTies()
     {
         return ties;
-    }
+    }  
 }
